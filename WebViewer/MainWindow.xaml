@@ -1,0 +1,68 @@
+﻿<Window x:Class="WebViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WebViewer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" 
+        WindowStyle="None" 
+        Deactivated="Window_Deactivated" 
+        KeyDown="Window_KeyDown" 
+        Loaded="Window_Loaded" 
+        Closed="Window_Closed" 
+        PreviewKeyDown="Window_PreviewKeyDown" 
+        ManipulationBoundaryFeedback="ManipulationBoundaryFeedbackHandler"
+        Background="White" MouseDown="Window_MouseDown" MouseMove="Window_MouseMove" TouchDown="Window_TouchDown">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                    Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Blue" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <!-- If we don't tell the background to change on hover, it will remain the same -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0">
+        <Grid x:Name="mainContent" Margin="0,0,0,132" ClipToBounds="True"/>
+        <Grid x:Name="bottomMenu" Height="132" VerticalAlignment="Bottom">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF7F7F7" Offset="0.076"/>
+                    <GradientStop Color="#FFCBCBCB"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Button x:Name="btBack" Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="112" Height="112" Click="btBack_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="media/themes/sketch/back.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btMain" Content="" HorizontalAlignment="Center" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="112" Height="112" Click="btMain_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="media/themes/sketch/main.png"/>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btForward" Content="" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="112" Height="112" Click="btForward_Click" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <ImageBrush ImageSource="media/themes/sketch/forward.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </Grid>
+
+</Window>

@@ -1,0 +1,29 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+"Shell"="C:\\KIOSK\\WebViewer.exe>"
+
+#Autologin for kiosk user:
+
+#[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon] 
+#"AutoAdminLogon"="1"
+#"ForceAutoLogon"="1"
+#"DefaultUserName"="Kiosk"
+#"DefaultDomainName"=""
+#"DefaultPassword"=""
+
+#[Option] If you need to disable Ctrl+Alt+Del, then use this registry key value ("") or you can place there own application:
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\taskmgr.exe]
+"Debugger"="\"\""
+
+
+ Make Program run with Windows boot via Registry
+You can make use of the Registry Startup Paths to add programs to start with every boot. You can use the Run and RunOnce registry keys to make programs to run each time that a user logs on or run just once.
+
+The registry keys are located here. They are for Current User and for All Users – Run every time or run just once:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
